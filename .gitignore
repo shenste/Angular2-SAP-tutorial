@@ -36,7 +36,13 @@
 ehthumbs.db
 Thumbs.db
 
+# .js and .jsmap #
+######################
+app/**/*.js
+app/**/*.js.map
+
 # NPM starts files #
 ######################
 node_modules/
+typings/
 .idea/

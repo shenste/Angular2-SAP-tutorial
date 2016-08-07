@@ -1,1 +1,0 @@
-{"version":3,"file":"navbar-component.js","sourceRoot":"","sources":["navbar-component.ts"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;YAcA;gBAAA;gBAEA,CAAC;gBAdD;oBAAC,gBAAS,CAAC;wBACP,QAAQ,EAAE,SAAS;wBACnB,WAAW,EAAE,oCAAoC;wBACjD,MAAM,EAAE,CAAC,cAER,CAAC;wBACF,UAAU,EAAE,EAAE;wBACd,SAAS,EAAE,EAAE;qBAGhB,CAAC;;mCAAA;gBAIF,sBAAC;YAAD,CAAC,AAFD,IAEC;YAFD,6CAEC,CAAA"}
