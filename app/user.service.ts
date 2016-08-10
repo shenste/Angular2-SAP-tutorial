@@ -14,10 +14,8 @@ export class UserService {
             .map(res => res.json());
     }
 
-    getFollowers(userName: string) {
-        let searchUrl = this._url + userName + '/followers';
-        console.log(searchUrl);
-        return this._http.get(searchUrl)
-            .map(res => res.json());
+    addUser(user) {
+        return this._http.post(this._url, JSON.stringify(user))
+            .map(res => res.json())
     }
 }
