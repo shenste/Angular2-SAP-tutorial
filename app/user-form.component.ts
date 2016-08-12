@@ -58,16 +58,21 @@ export class UserFormComponent implements OnInit,CanDeactivate{
         return true;
     }
 
-    // add user
+    // add/edit user
     save(){
-        console.log('forms value: ' + JSON.stringify(this.form.value));
-        this._userService.addUser(this.form.value)
-            .subscribe(x => {
-                // Ideally, here we'd want:
-                //form.markAsPristine();
-                console.log('x is: ' + JSON.stringify(x));
-                this._router.navigate(['Users']);
-            })
+        // console.log('forms value: ' + JSON.stringify(this.form.value));
+        var result;
+        if (!this.user.id) {
+            result = this._userService.addUser(this.user);
+        } else {
+            result = this._userService.updateUser(this.user);
+
+        }
+        result.subscribe(x => {
+            console.log('x is: ' + JSON.stringify(x));
+            this._router.navigate(['Users']);
+        });
+
 
     }
 }
