@@ -18,4 +18,10 @@ export class UserService {
         return this._http.post(this._url, JSON.stringify(user))
             .map(res => res.json())
     }
+
+    // make sure userId has no type, otherwise I got a weird undefined error
+    getUser(userId){
+        return this._http.get(this._url + "/" + userId)
+            .map(res => res.json());
+    }
 }
