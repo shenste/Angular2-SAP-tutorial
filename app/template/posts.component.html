@@ -22,7 +22,8 @@
             </div>
             <!-- divider -->
             <hr/>
-
+            <!-- comment loading spinner-->
+            <spinner [visible]="commentLoading"></spinner>
             <div *ngFor="#comment of currentPost.comments"
                 class="media">
                 <div class="media">
