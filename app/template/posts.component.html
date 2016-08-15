@@ -2,10 +2,24 @@
 <spinner [visible]="isLoading"></spinner>
 <div class="row">
     <div class="col-md-6">
-        <ul class="list-group">
-            <li *ngFor="#post of posts" class="list-group-item">
+        <ul class="posts list-group">
+            <li *ngFor="#post of posts"
+                class="list-group-item"
+                [class.active]="currentPost == post"
+                (click)="onPostSelected(post)">
                 {{ post.title }}
             </li>
         </ul>
+    </div>
+
+    <div *ngIf="currentPost" class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">{{ currentPost.title }}</h3>
+            </div>
+            <div class="panel-body">
+                {{ currentPost.body }}
+            </div>
+        </div>
     </div>
 </div>
