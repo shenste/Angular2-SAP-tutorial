@@ -20,6 +20,26 @@
             <div class="panel-body">
                 {{ currentPost.body }}
             </div>
+            <!-- divider -->
+            <hr/>
+
+            <div *ngFor="#comment of currentPost.comments"
+                class="media">
+                <div class="media">
+                    <div class="media-left">
+                        <a href="#">
+                            <img class="media-object thumbnail"
+                                 src="http://lorempixel.com/80/80/people/?random={{ comment.id }}" >
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            {{ comment.name }}
+                        </h4>
+                        {{ comment.body }}
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

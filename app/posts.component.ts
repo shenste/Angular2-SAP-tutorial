@@ -30,7 +30,6 @@ import {SpinnerComponent} from "./spinner.component";
 export class PostsComponent implements OnInit{
     posts = [];
     isLoading = true;
-    @Output() change = new EventEmitter();
     currentPost = null;
     
     constructor(private _postService: PostService) {
@@ -48,8 +47,12 @@ export class PostsComponent implements OnInit{
     }
 
     onPostSelected(selectedPost) {
-        //this.currentPost = { title: selectedPost.title, body: selectedPost.body}
         this.currentPost = selectedPost;
+        this._postService.getComments(selectedPost.id)
+            .subscribe(
+                comments => this.currentPost.comments = comments,
+                e => console.error(e),
+                () => {});
     }
     
 }
