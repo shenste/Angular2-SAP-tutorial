@@ -1,7 +1,13 @@
 <h1>Posts</h1>
-<spinner [visible]="isLoading"></spinner>
 <div class="row">
+    <!-- master view -->
     <div class="col-md-6">
+        <!-- user drop down-->
+        <select class="form-control" #u (change)="filterPosts(u.value)">
+            <option value="">--- Select a user ---</option>
+            <option *ngFor="#user of users" [value]="user.id">{{ user.name }}</option>
+        </select>
+        <spinner [visible]="postsLoading"></spinner>
         <ul class="posts list-group">
             <li *ngFor="#post of posts"
                 class="list-group-item"
@@ -12,6 +18,7 @@
         </ul>
     </div>
 
+    <!-- detailed view -->
     <div *ngIf="currentPost" class="col-md-6">
         <div class="panel panel-default">
             <div class="panel-heading">

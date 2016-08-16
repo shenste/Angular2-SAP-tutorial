@@ -19,4 +19,9 @@ export class PostService {
         return this._http.get(this._url + pid + '/comments')
             .map(res => res.json());
     }
+    
+    getPostsByUserId(userId) {
+        return this._http.get(this._url + '?userId=' + userId)
+            .map(res => res.json());
+    }
 }

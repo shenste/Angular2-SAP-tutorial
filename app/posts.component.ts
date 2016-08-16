@@ -1,6 +1,7 @@
-import {Component, OnInit, Output, EventEmitter} from "angular2/core";
+import {Component, OnInit} from "angular2/core";
 import {PostService} from "./post.service";
 import {SpinnerComponent} from "./spinner.component";
+import {UserService} from "./user.service";
 
 @Component({
     selector: 'post',
@@ -23,26 +24,32 @@ import {SpinnerComponent} from "./spinner.component";
         }
     `],
     directives: [SpinnerComponent],
-    providers: [PostService]
+    providers: [PostService, UserService]
 
 })
 
 export class PostsComponent implements OnInit{
     posts = [];
-    isLoading = true;
-    currentPost; // this is currently null
+    postsLoading = true;
+    currentPost; // originally is currently
     commentLoading;
+    users = [];
     
-    constructor(private _postService: PostService) {
+    constructor(private _postService: PostService, private _userService: UserService) {
         
     }
     
     ngOnInit() {
+        // load users
+        this._userService.getUsers()
+            .subscribe(users => this.users = users);
+
+        // load posts
         this._postService.getPosts()
             .subscribe(posts => this.posts = posts,
                 e => console.error(e),
                 () =>{
-                    this.isLoading = false;
+                    this.postsLoading = false;
                 }
             );
     }
@@ -57,6 +64,28 @@ export class PostsComponent implements OnInit{
                 () => {
                     this.commentLoading =false;
                 });
+    }
+
+    filterPosts(userId) {
+        this.currentPost = null;
+        this.postsLoading = true;
+
+        var postSubscribable;
+        if (!userId){
+            postSubscribable = this._postService.getPosts();
+
+        } else {
+            postSubscribable = this._postService.getPostsByUserId(userId)
+        }
+
+        postSubscribable
+            .subscribe(
+                posts => this.posts = posts,
+                e => console.error(e),
+                () => {
+                    this.postsLoading = false;
+                }
+            )
     }
     
 }
