@@ -6,7 +6,7 @@ import {RouterLink} from "angular2/router";
 
 @Component({
     selector: 'user',
-    templateUrl: 'app/template/users.component.html',
+    templateUrl: 'app/users/users.component.html',
     providers: [UserService],
     directives: [RouterLink]
 })

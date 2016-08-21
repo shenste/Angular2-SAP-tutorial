@@ -6,7 +6,7 @@ import {PaginationComponent} from "../shared/pagination.component";
 
 @Component({
     selector: 'post',
-    templateUrl: 'app/template/posts.component.html',
+    templateUrl: 'app/posts/posts.component.html',
     styles: [`
         .posts li { 
             cursor: pointer; 

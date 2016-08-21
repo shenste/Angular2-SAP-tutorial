@@ -2,7 +2,7 @@ import {Component, Input, Output, EventEmitter, OnChanges} from "angular2/core";
 
 @Component({
     selector: 'pagination',
-    templateUrl: 'app/template/pagination.component.html',
+    templateUrl: 'app/shared/pagination.component.html',
     directives: [],
     providers: []
 })

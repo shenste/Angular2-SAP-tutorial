@@ -6,7 +6,7 @@ import {UserService} from "./user.service";
 import {User} from "../dto/user";
 
 @Component({
-    templateUrl: 'app/template/user-form.component.html',
+    templateUrl: 'app/users/user-form.component.html',
     providers: [UserService]
 })
 export class UserFormComponent implements OnInit,CanDeactivate{
