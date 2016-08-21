@@ -1,9 +1,9 @@
 import {Component, OnInit} from 'angular2/core';
 import {FormBuilder, ControlGroup, Validators} from 'angular2/common';
-import {BasicValidators} from "./validator/basicValidators";
+import {BasicValidators} from "../validator/basicValidators";
 import {CanDeactivate, Router, RouteParams} from "angular2/router";
 import {UserService} from "./user.service";
-import {User} from "./dto/user";
+import {User} from "../dto/user";
 
 @Component({
     templateUrl: 'app/template/user-form.component.html',
