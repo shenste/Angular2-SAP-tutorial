@@ -7,9 +7,16 @@
             <option value="">--- Select a user ---</option>
             <option *ngFor="#user of users" [value]="user.id">{{ user.name }}</option>
         </select>
+
+        <!-- Loading Spinner -->
         <spinner [visible]="postsLoading"></spinner>
+
+        <!-- Pagination -->
+        <pagination [items]="posts" [page-size]="pageSize" (page-changed)="onPageChange($event)"></pagination>
+
+        <!-- Posts -->
         <ul class="posts list-group">
-            <li *ngFor="#post of posts"
+            <li *ngFor="#post of postsOnThisPage"
                 class="list-group-item"
                 [class.active]="currentPost == post"
                 (click)="onPostSelected(post)">

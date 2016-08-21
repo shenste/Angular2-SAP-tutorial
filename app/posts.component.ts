@@ -2,6 +2,7 @@ import {Component, OnInit} from "angular2/core";
 import {PostService} from "./post.service";
 import {SpinnerComponent} from "./spinner.component";
 import {UserService} from "./user.service";
+import {PaginationComponent} from "./pagination.component";
 
 @Component({
     selector: 'post',
@@ -23,17 +24,19 @@ import {UserService} from "./user.service";
             color: #2c3e50; 
         }
     `],
-    directives: [SpinnerComponent],
+    directives: [SpinnerComponent, PaginationComponent],
     providers: [PostService, UserService]
 
 })
 
 export class PostsComponent implements OnInit{
+    pageSize = 10;
     posts = [];
     postsLoading = true;
     currentPost; // originally is currently
     commentLoading;
     users = [];
+    postsOnThisPage = [];
     
     constructor(private _postService: PostService, private _userService: UserService) {
         
@@ -46,9 +49,12 @@ export class PostsComponent implements OnInit{
 
         // load posts
         this._postService.getPosts()
-            .subscribe(posts => this.posts = posts,
+            .subscribe(posts => {
+                    this.posts = posts;
+                    this.getPostsInPage(1);
+                },
                 e => console.error(e),
-                () =>{
+                () => {
                     this.postsLoading = false;
                 }
             );
@@ -80,12 +86,26 @@ export class PostsComponent implements OnInit{
 
         postSubscribable
             .subscribe(
-                posts => this.posts = posts,
+                posts => {
+                    this.posts = posts;
+                    this.getPostsInPage(1);
+                },
                 e => console.error(e),
                 () => {
                     this.postsLoading = false;
                 }
             )
+    }
+
+    onPageChange($event) {
+        this.getPostsInPage($event.newPageNumber);
+    }
+
+    private getPostsInPage(page) {
+        this.postsOnThisPage = [];
+        for (var i=this.pageSize*(page-1); i<this.pageSize*(page); i++) {
+            this.postsOnThisPage.push( this.posts[i] );
+        }
     }
     
 }
