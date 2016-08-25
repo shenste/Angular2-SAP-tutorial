@@ -5,7 +5,7 @@
         <!-- user drop down-->
         <select class="form-control" #u (change)="filterPosts(u.value)">
             <option value="">--- Select a user ---</option>
-            <option *ngFor="#user of users" [value]="user.id">{{ user.name }}</option>
+            <option *ngFor="let user of users" [value]="user.id">{{ user.name }}</option>
         </select>
 
         <!-- Loading Spinner -->
@@ -16,7 +16,7 @@
 
         <!-- Posts -->
         <ul class="posts list-group">
-            <li *ngFor="#post of postsOnThisPage"
+            <li *ngFor="let post of postsOnThisPage"
                 class="list-group-item"
                 [class.active]="currentPost == post"
                 (click)="onPostSelected(post)">
@@ -38,7 +38,7 @@
             <hr/>
             <!-- comment loading spinner-->
             <spinner [visible]="commentLoading"></spinner>
-            <div *ngFor="#comment of currentPost.comments"
+            <div *ngFor="let comment of currentPost.comments"
                 class="media">
                 <div class="media">
                     <div class="media-left">

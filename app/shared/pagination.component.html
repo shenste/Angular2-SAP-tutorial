@@ -5,7 +5,7 @@
                 <span aria-hidden="true">&laquo;</span>
             </a>
         </li>
-        <li [class.active]="page == currentPage" *ngFor="#page of pages">
+        <li [class.active]="page == currentPage" *ngFor="let page of pages">
             <a (click)="jumpToPage(page)">{{ page }}</a>
         </li>
         <li [class.disabled]="currentPage == pages.length">
