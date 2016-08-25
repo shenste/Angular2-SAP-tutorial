@@ -1,8 +1,7 @@
-import {Component, OnInit} from "angular2/core";
+import {Component, OnInit} from "@angular/core";
 import {UserService} from "./user.service";
-import {Observable} from "rxjs/Observable";
 import 'rxjs/add/operator/map';
-import {RouterLink} from "angular2/router";
+import {RouterLink} from "@angular/router-deprecated";
 
 @Component({
     selector: 'user',

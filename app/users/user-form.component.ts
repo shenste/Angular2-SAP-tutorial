@@ -1,7 +1,7 @@
-import {Component, OnInit} from 'angular2/core';
-import {FormBuilder, ControlGroup, Validators} from 'angular2/common';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, ControlGroup, Validators} from '@angular/common';
 import {BasicValidators} from "../validator/basicValidators";
-import {CanDeactivate, Router, RouteParams} from "angular2/router";
+import {CanDeactivate, Router, RouteParams} from "@angular/router-deprecated";
 import {UserService} from "./user.service";
 import {User} from "../dto/user";
 
