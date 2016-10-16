@@ -9,9 +9,6 @@
     "removeComments": false,
     "noImplicitAny": false
   },
-  "files": [
-
-  ],
   "exclude": [
     "node_modules",
     "typings/main",

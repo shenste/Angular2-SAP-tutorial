@@ -7,7 +7,7 @@ export class PostService {
     _url = 'http://jsonplaceholder.typicode.com/posts/';
     
     constructor(private _http: Http) {
-        
+
     }
     
     getPosts() {
